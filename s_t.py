@@ -16,89 +16,92 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Paleta Gótica:
-# Fondo: #121212 (Negro profundo)
-# Texto Principal: #EAE0D0 (Papiro antiguo)
-# Acento/Fuego: #A93226 (Rojo sangre)
-# Borde/Metal: #5D4037 (Marrón oscuro/Caoba)
+# Paleta Gótica (Estilo Bloodborne):
+# Fondo: #0A0A0A (Negro profundo)
+# Texto Principal: #F5F5DC (Hueso/Papiro)
+# Acento/Sangre: #8B0000 (Rojo intenso)
+# Metal/Piedra: #6B5B3E (Bronce oscuro/Caoba)
 
 gothic_css = """
 <style>
 /* Fondo general y fuente serif dramática */
 body {
-    background-color: #121212;
-    color: #EAE0D0;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: #0A0A0A;
+    color: #F5F5DC;
+    font-family: 'Georgia', serif;
 }
 .stApp {
-    background-color: #121212;
-    color: #EAE0D0;
+    background-color: #0A0A0A;
+    color: #F5F5DC;
 }
 
-/* Título Principal: Dramático y con sombra */
+/* Título Principal: Cincelado y Dramático */
 h1 {
-    color: #A93226; /* Rojo de acento */
-    text-shadow: 3px 3px 5px #000000;
-    font-size: 2.5em;
-    border-bottom: 2px solid #5D4037;
+    color: #8B0000; /* Rojo sangre */
+    text-shadow: 2px 2px 5px #000000;
+    font-size: 2.8em;
+    border-bottom: 5px double #6B5B3E; /* Borde doble color bronce */
     padding-bottom: 10px;
     margin-bottom: 30px;
     text-align: center;
+    letter-spacing: 2px;
 }
 
-/* Subtítulos: Menos prominentes, color de texto */
+/* Subtítulos: Menos prominentes, color de metal */
 h2, h3 {
-    color: #C9C9C9;
+    color: #D4D4D4;
     font-family: 'Georgia', serif;
 }
 
-/* Sidebar: Fondo de madera oscura */
+/* Sidebar: Fondo de cámara oscura con bordes intrincados */
 [data-testid="stSidebar"] {
-    background-color: #333333;
-    color: #EAE0D0;
-    border-right: 3px solid #5D4037;
+    background-color: #1A1A1A;
+    color: #F5F5DC;
+    border-right: 3px solid #6B5B3E;
+    box-shadow: 0 0 15px rgba(107, 91, 62, 0.5), inset 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
-/* Elementos de entrada (Selectboxes, Textareas): Fondo oscuro */
+/* Elementos de entrada (Runas): Fondo oscuro, borde metálico */
 .stTextInput > div > div > input, .stTextArea > div > textarea, .stSelectbox > div > div {
-    background-color: #2c2c2c;
-    color: #EAE0D0;
-    border: 1px solid #5D4037;
+    background-color: #1A1A1A;
+    color: #F5F5DC;
+    border: 2px solid #6B5B3E;
     border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Botones Streamlit: Botones tipo Sello/Metal */
+/* Botones Streamlit (Sellar Traducción): Botones tipo Relicario */
 .stButton > button {
-    background-color: #5D4037;
-    color: #EAE0D0;
-    border: 2px solid #A93226;
+    background-color: #444444; /* Base metálica */
+    color: #F5F5DC;
+    border: 3px solid #8B0000; /* Borde rojo sangre */
     border-radius: 8px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-weight: bold;
-    box-shadow: 4px 4px 6px #000000;
+    box-shadow: 6px 6px 10px #000000, inset 0 0 10px rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s;
 }
 
 .stButton > button:hover {
-    background-color: #A93226; /* Hover rojo intenso */
+    background-color: #8B0000; /* Hover a rojo intenso */
     color: white;
-    box-shadow: 6px 6px 10px #000000;
+    box-shadow: 8px 8px 15px #000000;
     transform: translateY(-2px);
 }
 
-/* Botón de Bokeh (Speech-to-Text): */
+/* Botón de Bokeh (Sello del Audio): Rojo, Metal y Sombra pesada */
 .bk-root .bk-btn {
-    background-color: #A93226 !important; /* Fuerza el color rojo */
+    background-color: #8B0000 !important; /* Fuerza el color rojo */
     color: white !important;
-    border: 2px solid #5D4037 !important;
+    border: 3px solid #6B5B3E !important; /* Borde metálico */
     font-weight: bold !important;
-    box-shadow: 4px 4px 6px #000000 !important;
+    box-shadow: 6px 6px 10px #000000 !important;
     border-radius: 8px !important;
     padding: 10px 20px !important;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 .bk-root .bk-btn:hover {
-    background-color: #5D4037 !important; 
+    background-color: #6B5B3E !important; /* Color de metal oxidado al pasar el ratón */
 }
 </style>
 """
@@ -108,8 +111,8 @@ st.title("El Grimorio de las Lenguas")
 st.subheader("Dicta tu conjuro. Recibirás el eco en otra lengua.")
 
 # --- 2. Imagen Gótica (Placeholder de un Cuervo) ---
-# Imagen: Un cuervo o un manuscrito antiguo sobre un fondo oscuro.
-image_url = "https://placehold.co/650x250/2c2c2c/A93226?text=El+Cuervo+de+los+Idiomas"
+# Imagen: Un cuervo, una lámpara de aceite en una noche oscura o un libro antiguo.
+image_url = "https://placehold.co/650x250/1A1A1A/8B0000?text=Antigua+Linterna+y+Manuscritos+Prohibidos"
 st.image(image_url, caption="Símbolo de la sabiduría y el misterio.", use_column_width=True)
 
 with st.sidebar:
@@ -119,7 +122,6 @@ with st.sidebar:
         "Cuando el cuervo te escuche, el texto aparecerá, y podrás sellar tu conversión."
     )
     st.markdown("---")
-
 
 # --- 3. Funcionalidad Speech-to-Text con Estilo ---
 st.write("Pulsa el Sello del Audio para dictar tu mandato:")
@@ -161,6 +163,25 @@ result = streamlit_bokeh_events(
     override_height=75,
     debounce_time=0)
 
+# --- Separador Gótico ---
+st.markdown(
+    """
+    <div style="text-align: center; margin: 30px 0;">
+        <span style="font-size: 2.5em; color: #6B5B3E; display: inline-block; transform: rotate(90deg);">
+            &#10010;
+        </span>
+        <span style="font-size: 2.5em; color: #8B0000; margin: 0 10px;">
+            &#9888;
+        </span>
+        <span style="font-size: 2.5em; color: #6B5B3E; display: inline-block; transform: rotate(-90deg);">
+            &#10010;
+        </span>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+# -------------------------
+
 if result:
     if "GET_TEXT" in result:
         text_from_speech = result.get("GET_TEXT")
@@ -169,7 +190,7 @@ if result:
         elif text_from_speech == "No se detectó voz clara.":
             st.error("❌ El Oráculo no ha percibido tu voz. Inténtalo de nuevo.")
         else:
-            st.markdown(f"**📜 Mensaje Original:** *{text_from_speech}*")
+            st.markdown(f"**📜 Mensaje Original (Revelado):** *{text_from_speech}*")
 
     try:
         os.makedirs("temp", exist_ok=True)
